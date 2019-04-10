@@ -47,15 +47,20 @@ module.exports = function(RED) {
                     break;
             }
 
+            node.status({ fill: "blue", shape: "dot", text: "Fetching user data..." });
+
             if (getUserPromise) {
                 getUserPromise.then((userRecord) => {
                     msg.payload = userRecord;
                     node.send(msg);
+                    node.status({});
                 }).catch(function(error) {
-                    node.status({ fill: "red", shape: "ring", text: "get user failed" });
+                    node.error(error);
+                    node.status({ fill: "red", shape: "ring", text: "Error fetching user data" });
                 });
             } else {
-                node.status({ fill: "red", shape: "ring", text: "unknown query type" });
+                node.error("Unknown query type");
+                node.status({ fill: "red", shape: "ring", text: "Unknown query type" });
             }
 
         })
