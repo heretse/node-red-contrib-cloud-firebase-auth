@@ -1,6 +1,6 @@
 # node-red-contrib-cloud-firebase-auth
 
-Node-RED nodes to handle google cloud Firebase Authentication get user operations
+Node-RED nodes to handle google cloud Firebase Authentication operations
 
 ## Install
 Install from [npm](https://www.npmjs.com/package/node-red-contrib-cloud-firebase-auth)
