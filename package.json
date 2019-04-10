@@ -1,0 +1,38 @@
+{
+    "author": {
+        "name": "Winston Hsieh"
+    },
+    "bugs": {
+        "url": "https://github.com/heretse/node-red-contrib-cloud-firebase-auth/issues"
+    },
+    "bundleDependencies": false,
+    "dependencies": {
+        "firebase-admin": "^7.2.0"
+    },
+    "deprecated": false,
+    "description": "Node-RED nodes to handle google cloud firebase auth operations",
+    "homepage": "https://github.com/heretse/node-red-contrib-cloud-firebase-auth#readme",
+    "keywords": [
+        "firebase",
+        "authentication",
+        "node",
+        "node-red",
+        "google"
+    ],
+    "license": "MIT",
+    "name": "node-red-contrib-cloud-firebase-auth",
+    "node-red": {
+        "nodes": {
+            "firebaseAdmin": "src/Admin/firebaseAdmin.js",
+            "firestoreAuth": "src/Auth/Auth.js"
+        }
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/heretse/node-red-contrib-cloud-firebase-auth.git"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "version": "0.1.0"
+}

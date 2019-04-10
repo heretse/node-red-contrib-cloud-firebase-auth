@@ -1,0 +1,116 @@
+<script type="text/x-red" data-template-name="firebase-auth-get-user">
+    <div class="firebase">
+
+        <div class="form-row">
+            <label for="node-input-admin"><i class="fa fa-cogs"></i> Admin </label>
+            <input type="text" id="node-input-admin">
+        </div>
+        <div class="form-row">
+            <label for="node-input-name"><i class="fa fa-tag"></i> Node Name </label>
+            <input type="text" id="node-input-name">
+        </div>
+        <div class="form-row">
+            <label for="node-input-queryType"><i class="fa fa-tag"></i> Query Type </label>
+            <select type="text" id="node-input-queryType">
+                <option value="uid">User ID</option>
+                <option value="email">Email</option>
+                <option value="phone">Phome Number</option>
+            </select>
+        </div>
+        <div class="form-row">
+            <label for="node-input-queryValue"><i class="fa fa-tag"></i> Query Value </label>
+            <input type="text" id="node-input-queryValue">
+        </div>
+
+    </div>
+</script>
+
+<script type="text/x-red" data-help-name="firebase-auth-get-user">
+    <p>The node fetches user record from Firebase Authentication</p>
+    <h3>Inputs</h3>
+    <p>Received on the <code>msg.firebase</code> property</p>
+    <dl class="message-properties">
+        <dt>
+            type <span class="property-type">enum in "uid", "email" or "phone"</span>
+        </dt>
+        <dd>The query type for fetching user record</dd>
+        <dt>
+            query <span class="property-type">string</span>
+        </dt>
+        <dd>The query value for fetching user record</dd>
+    </dl>
+    <p>
+        The above inputs can also be set from within the node itself but can be overridden by corresponding message properties.
+        <br> Sample <code>msg.firebase</code><br>
+        <pre>msg.firebase = {
+         type: 'uid',
+         query: 'aBr2FHMcHShwgKJspW4ZLHAbIsD3'
+        }</pre>
+    </p>
+    <h3>Outputs</h3>
+    Response user record from the operation is output through the <code>msg.payload</code> property
+</script>
+
+<style type="text/css">
+    .firebase .node-input-query-container-row {
+        width: 100%;
+    }
+    
+    #node-input-query-container .input-query-row {
+        display: grid;
+        grid-gap: 10px;
+        grid-template-columns: 1fr 3fr;
+        margin-top: 8px;
+    }
+    
+    .input-query-row .input-query-label {
+        text-align: right;
+    }
+    
+    .input-query-row input,
+    .input-query-row select {
+        width: 100%;
+    }
+</style>
+
+<script type="text/javascript">
+    RED.nodes.registerType('firebase-auth-get-user', {
+        category: 'firebase',
+        defaults: {
+            name: {
+                required: false
+            },
+            queryType: {
+                value: 'uid',
+                required: true
+            },
+            queryValue: {
+                value: '',
+                required: true
+            },
+            admin: {
+                type: "firebase admin",
+                required: true
+            }
+        },
+        color: "#F3B567",
+        paletteLabel: "Auth get user",
+        inputs: 1,
+        outputs: 1,
+        icon: "file.png",
+        align: "left",
+        label: function() {
+            return this.name || "Get user by " + this.queryType;
+        },
+        labelStyle: function() {
+            return (!this.name) ? "node_label_italic" : "";
+        },
+        oneditprepare: function() {
+            const listContainer = $('#node-input-queryType')
+            listContainer.val(this.queryType).change();
+        },
+        oneditsave: function() {
+
+        }
+    });
+</script>
