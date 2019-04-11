@@ -56,6 +56,8 @@ module.exports = function(RED) {
                     node.status({});
                 }).catch(function(error) {
                     node.error(error);
+                    msg.payload = null;
+                    node.send(msg);
                     node.status({ fill: "red", shape: "ring", text: "Error fetching user data" });
                 });
             } else {
