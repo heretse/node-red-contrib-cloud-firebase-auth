@@ -7,7 +7,7 @@
     },
     "bundleDependencies": false,
     "dependencies": {
-        "firebase-admin": "^7.2.0"
+        "firebase-admin": "^11.4.1"
     },
     "deprecated": false,
     "description": "Node-RED nodes to handle google cloud Firebase Authentication operations",
